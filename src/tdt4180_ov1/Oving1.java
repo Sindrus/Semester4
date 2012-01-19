@@ -10,10 +10,7 @@ public class Oving1{
 		JFrame jf = new JFrame();
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jf.setSize(600, 70);
-		JPanel bnt = new ButtonsNText();
-	
-		jf.add(bnt);
-	
+		jf.add(new ButtonsNText());
 		jf.setVisible(true);
 	}
 	

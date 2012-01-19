@@ -36,7 +36,6 @@ public class ButtonsNText extends JPanel implements KeyListener{
 		UpperCaseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TextLine.setText(TextLine.getText().toUpperCase());
-				System.out.println(UpperCaseButton.getName() + " skrevet tekst er: " + TextLine.getText());
 			}
 		});
 		
@@ -45,7 +44,6 @@ public class ButtonsNText extends JPanel implements KeyListener{
 		LowerCaseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TextLine.setText(TextLine.getText().toLowerCase());
-				System.out.println(LowerCaseButton.getName());
 			}
 		});
 		
