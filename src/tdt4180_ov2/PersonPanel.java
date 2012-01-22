@@ -1,23 +1,15 @@
 package tdt4180_ov2;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.ComponentOrientation;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.LayoutManager;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.Insets;
+import java.util.jar.Attributes.Name;
 
-import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class PersonPanel extends JPanel{
@@ -27,40 +19,62 @@ public class PersonPanel extends JPanel{
 	JTextField DateOfBirthPropertyComponent;
 	JComboBox GenderPropertyComponent;
 	JSlider HeightPropertyComponent;
+	Person person;
 	
 	public PersonPanel(){
-		setLayout(new BorderLayout());
-		JLabel lblName = new JLabel("Name:");
-		JLabel lblEmail= new JLabel("Email:");
-		JLabel lblDOB = new JLabel("Birthday:");
-		JLabel lblGender = new JLabel("Gender:");
-		JLabel lblHeight = new JLabel("Height:");
 		
-//		JPanel jp1 = new JPanel();
-//		jp1.setLayout(null);
-
-		JPanel jp1 = new JPanel(new GridBagLayout());
+		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		
-		c.gridx=0;
+		c.anchor = GridBagConstraints.NORTHWEST;
+		c.weightx=0.2;
+		c.weighty=1.0;
 		c.gridy=0;
-		jp1.add(lblName,c);
+		c.gridx=0;
+		c.insets = new Insets(2, 5, 0, 5);
 		
+		add(new JLabel("Name:"),c);
 		c.gridy=1;
-		jp1.add(lblEmail,c);
-		
+		add(new JLabel("Email:"),c);
 		c.gridy=2;
-		jp1.add(lblDOB,c);
-		
+		add(new JLabel("Birthday:"),c);
 		c.gridy=3;
-		jp1.add(lblGender,c);
-		
+		add(new JLabel("Gender:"),c);
 		c.gridy=4;
-//		lblHeight.setBounds(50, 200, 75, 25);
-		jp1.add(lblHeight);
+		add(new JLabel("Height:"),c);
 		
-		add(jp1);
+		NamePropertyComponent = new JTextField("Troll",50);
+		EmailPropertyComponent = new JTextField("",50);
+		DateOfBirthPropertyComponent = new JTextField("",50);
+		GenderPropertyComponent = new JComboBox(Person.Gender.values());
+		HeightPropertyComponent = new JSlider(0,250,170);
+		HeightPropertyComponent.setMajorTickSpacing(50);
+		HeightPropertyComponent.setMinorTickSpacing(10);
+		HeightPropertyComponent.setPaintTicks(true);
+		HeightPropertyComponent.setPaintLabels(true);
+		
+		c.gridx=1;
+		c.gridy=0;
+		c.weightx=0.8;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		add(NamePropertyComponent,c);
+		c.gridy=1;
+		add(EmailPropertyComponent,c);
+		c.gridy=2;
+		add(DateOfBirthPropertyComponent,c);
+		c.gridy=3;
+		add(GenderPropertyComponent,c);
+		c.gridy=4;
+		add(HeightPropertyComponent,c);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
-
-	
 }

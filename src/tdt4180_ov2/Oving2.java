@@ -11,8 +11,9 @@ public class Oving2 {
 		
 		JFrame jf = new JFrame();
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jf.setSize(500, 500);
+		jf.setSize(400, 200);
 		jf.add(new PersonPanel());
+		jf.setResizable(false);
 		jf.setVisible(true);
 		jf.addKeyListener(new KeyListener() {
 			

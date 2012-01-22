@@ -12,7 +12,6 @@ public class Person {
 	private String email;
 	private int height;
 	
-	
 	public String getName() {
 		return name;
 	}
