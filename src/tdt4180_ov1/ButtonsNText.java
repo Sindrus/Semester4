@@ -54,7 +54,6 @@ public class ButtonsNText extends JPanel implements KeyListener{
 		add(LowerCaseButton);
 		add(ContinuousButton);
 		
-		
 	}
 
 	@Override
