@@ -3,6 +3,8 @@ package tdt4180_ov2;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -12,7 +14,7 @@ import javax.swing.JTextField;
 
 import tdt4180_ov2.Person.Gender;
 
-public class PersonPanel extends JPanel{
+public class PersonPanel extends JPanel implements PropertyChangeListener{
 	
 	JTextField NamePropertyComponent;
 	JTextField EmailPropertyComponent;
@@ -95,6 +97,10 @@ public class PersonPanel extends JPanel{
 		
 		model.setHeight(person.getHeight());
 		HeightPropertyComponent.setValue(person.getHeight());
+		
+	}
+	
+	public void propertyChange(PropertyChangeEvent evt) {
 		
 	}
 }
