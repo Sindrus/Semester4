@@ -1,10 +1,12 @@
 package tdt4180_ov2;
 
+import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 
 
 public class Person {
+	
 	public enum Gender{
 		male, female
 	}
@@ -22,12 +24,17 @@ public class Person {
 		psc = new PropertyChangeSupport(this);
 	}
 	
+	public void addPropertyChangeListener(PropertyChangeListener listener){
+		psc.addPropertyChangeListener(listener);
+	}
+	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
+		String oldValue = this.name;
 		this.name = name;
-		psc.firePropertyChange(this.name, this.name, name);
+		psc.firePropertyChange(this.name, oldValue, name);
 	}
 	public String getDateOfBirth() {
 		return dateOfBirth;
