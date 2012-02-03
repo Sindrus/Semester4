@@ -1,22 +1,33 @@
 package tdt4180_ov2;
 
+import java.beans.PropertyChangeSupport;
+
 
 
 public class Person {
 	public enum Gender{
 		male, female
 	}
+	
+	private PropertyChangeSupport psc;
+	
 	private String name;
 	private String dateOfBirth;
 	private Gender gender;
 	private String email;
 	private int height;
 	
+	public Person(String name){
+		this.name = name;
+		psc = new PropertyChangeSupport(this);
+	}
+	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
+		psc.firePropertyChange(this.name, this.name, name);
 	}
 	public String getDateOfBirth() {
 		return dateOfBirth;
@@ -42,4 +53,6 @@ public class Person {
 	public void setHeight(int height) {
 		this.height = height;
 	}
+	
+	 
 }
