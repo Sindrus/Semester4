@@ -10,14 +10,12 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
 
-import tdt4180_ov2.Person.Gender;
-
 public class PersonPanel extends JPanel{
 	
 	JTextField NamePropertyComponent;
 	JTextField EmailPropertyComponent;
 	JTextField DateOfBirthPropertyComponent;
-	JComboBox<Person.Gender> GenderPropertyComponent;
+	JComboBox GenderPropertyComponent;
 	JSlider HeightPropertyComponent;
 	private Person model;
 	
@@ -53,7 +51,7 @@ public class PersonPanel extends JPanel{
 		DateOfBirthPropertyComponent = new JTextField("",50);
 		DateOfBirthPropertyComponent.setName("DateOfBirthPropertyComponent");
 		
-		GenderPropertyComponent = new JComboBox<Gender>(Person.Gender.values());
+		GenderPropertyComponent = new JComboBox(Person.Gender.values());
 		GenderPropertyComponent.setName("GenderPropertyComponent");
 		
 		HeightPropertyComponent = new JSlider(0,250,170);
