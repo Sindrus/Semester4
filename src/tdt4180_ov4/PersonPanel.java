@@ -1,4 +1,4 @@
-package tdt4180_ov3;
+package tdt4180_ov4;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -11,7 +11,8 @@ import java.beans.PropertyChangeListener;
 import javax.swing.*;
 import javax.swing.event.*;
 
-import tdt4180_ov3.Person.Gender;
+import tdt4180_ov4.Person;
+import tdt4180_ov4.Person.Gender;
 
 public class PersonPanel extends JPanel implements PropertyChangeListener{
 	
