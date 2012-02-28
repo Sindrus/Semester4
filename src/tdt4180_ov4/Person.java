@@ -43,8 +43,7 @@ public class Person {
 	}
 	
 	public String getName() {
-		//return name;
-		return name +" "+ email;
+		return name;
 	}
 	public void setName(String name) {
 		String oldValue = this.name;

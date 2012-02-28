@@ -16,8 +16,8 @@ import javax.swing.event.ListSelectionListener;
 public class PersonListPanel extends JPanel implements ListSelectionListener{
 	
 	PersonPanel pp;
-	JList personList;
-	DefaultListModel defaultListModel;
+	JList<Person> personList;
+	DefaultListModel<Person> defaultListModel;
 	JButton newPersonButton;
 	JButton deletePersonButton;
 	Person p1;
@@ -26,23 +26,24 @@ public class PersonListPanel extends JPanel implements ListSelectionListener{
 	
 	public PersonListPanel() {
 		GridBagConstraints g = new GridBagConstraints(); 
-		defaultListModel = new DefaultListModel();
+		defaultListModel = new DefaultListModel<Person>();
 
-		personList = new JList(defaultListModel);
+		personList = new JList<Person>(defaultListModel);
+		personList.setCellRenderer(new PersonRenderer());
 		personList.addListSelectionListener(this);
 		personList.setFixedCellWidth(200);
-		personList.setSize(400, 400);
+	//	personList.setSize(400, 400);
 		personList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		
 		personList.setName("PersonList");
 		
-		p1 = new Person("Per");
-		defaultListModel.addElement(p1);
-		p2 = new Person("Hans");
-		defaultListModel.addElement(p2);
-		p3 = new Person("Egil");
-		defaultListModel.addElement(p3);
+//		p1 = new Person("Per");
+//		defaultListModel.addElement(p1);
+//		p2 = new Person("Hans");
+//		defaultListModel.addElement(p2);
+//		p3 = new Person("Egil");
+//		defaultListModel.addElement(p3);
 		
 		g.gridx=0;
 		g.gridy=0;
@@ -82,28 +83,32 @@ public class PersonListPanel extends JPanel implements ListSelectionListener{
 			defaultListModel.addElement(new Person(pp.NamePropertyComponent.getText()));
 		}
 	}
+	
 	class deletePerson implements ActionListener{
 		public void actionPerformed(ActionEvent e){
-//			personList.remove(personList.getSelectedIndex());
-			defaultListModel.removeElementAt(personList.getSelectedIndex());
-//			defaultListModel.removeElement(personList.getSelectedIndex());
-//			defaultListModel.removeElement(getModel());
-//			System.out.println("Størrelsen:"+personList.get);
+			int index = personList.getSelectedIndex(); 
+			if (index>-1){
+				defaultListModel.remove(index);
+				pp.NamePropertyComponent.setText("");
+				pp.EmailPropertyComponent.setText("");
+				pp.DateOfBirthPropertyComponent.setText("");
+				pp.GenderPropertyComponent.setSelectedItem(null);
+				pp.HeightPropertyComponent.setValue(0);
+			}
 		}
 	}
 	
-	public void setModel(Person dlm){
-		defaultListModel.addElement(dlm);
+	public void setModel(DefaultListModel dlm){
+		this.defaultListModel = dlm; 
 	}
-	public Person getModel(){
-		
-		
-		return (Person)defaultListModel.getElementAt(personList.getSelectedIndex());
+	public DefaultListModel<Person> getModel(){
+		return this.defaultListModel;
 	}
 
 	public void valueChanged(ListSelectionEvent e) {
-
-		pp.setModel((Person)defaultListModel.elementAt(personList.getSelectedIndex()));
+		int index = personList.getSelectedIndex();
+		if(index >-1)
+			pp.setModel((Person)defaultListModel.elementAt(personList.getSelectedIndex()));
 		
 //		pp.setModel(getModel());
 	}
