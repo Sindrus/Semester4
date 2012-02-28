@@ -16,8 +16,8 @@ import javax.swing.event.ListSelectionListener;
 public class PersonListPanel extends JPanel implements ListSelectionListener{
 	
 	PersonPanel pp;
-	JList<Person> personList;
-	DefaultListModel<Person> defaultListModel;
+	JList personList;
+	DefaultListModel defaultListModel;
 	JButton newPersonButton;
 	JButton deletePersonButton;
 	Person p1;
@@ -26,11 +26,12 @@ public class PersonListPanel extends JPanel implements ListSelectionListener{
 	
 	public PersonListPanel() {
 		GridBagConstraints g = new GridBagConstraints(); 
-		defaultListModel = new DefaultListModel<Person>();
+		defaultListModel = new DefaultListModel();
 
-		personList = new JList<Person>(defaultListModel);
+		personList = new JList(defaultListModel);
 		personList.addListSelectionListener(this);
 		personList.setFixedCellWidth(200);
+		personList.setSize(400, 400);
 		personList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		
@@ -57,14 +58,14 @@ public class PersonListPanel extends JPanel implements ListSelectionListener{
 		newPersonButton.setName("NewPersonButton");
 		newPersonButton.addActionListener(new newPerson());
 		
-		g.gridy=1;
+		g.gridx=1;
 		this.add(newPersonButton,g);
 		
 		deletePersonButton = new JButton("Kill person");
-		deletePersonButton.setName("RemovePersionButton");
+		deletePersonButton.setName("DeletePersonButton");
 		deletePersonButton.addActionListener(new deletePerson());
 		
-		g.gridy=2;
+		g.gridx=2;
 		this.add(deletePersonButton,g);
 		
 		pp = new PersonPanel();
@@ -74,8 +75,6 @@ public class PersonListPanel extends JPanel implements ListSelectionListener{
 		g.gridy=1;
 		
 		this.add(pp,g);
-		
-		
 	}
 	
 	class newPerson implements ActionListener{
@@ -85,7 +84,11 @@ public class PersonListPanel extends JPanel implements ListSelectionListener{
 	}
 	class deletePerson implements ActionListener{
 		public void actionPerformed(ActionEvent e){
-			defaultListModel.remove(personList.getSelectedIndex());
+//			personList.remove(personList.getSelectedIndex());
+			defaultListModel.removeElementAt(personList.getSelectedIndex());
+//			defaultListModel.removeElement(personList.getSelectedIndex());
+//			defaultListModel.removeElement(getModel());
+//			System.out.println("Størrelsen:"+personList.get);
 		}
 	}
 	
@@ -93,11 +96,16 @@ public class PersonListPanel extends JPanel implements ListSelectionListener{
 		defaultListModel.addElement(dlm);
 	}
 	public Person getModel(){
+		
+		
 		return (Person)defaultListModel.getElementAt(personList.getSelectedIndex());
 	}
 
 	public void valueChanged(ListSelectionEvent e) {
-		pp.setModel(getModel());
+
+		pp.setModel((Person)defaultListModel.elementAt(personList.getSelectedIndex()));
+		
+//		pp.setModel(getModel());
 	}
 	
 }

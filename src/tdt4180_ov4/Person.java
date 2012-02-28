@@ -34,12 +34,17 @@ public class Person {
 		psc = new PropertyChangeSupport(this);
 	}
 	
+	public String toString(){
+		return name;
+	}
+	
 	public void addPropertyChangeListener(PropertyChangeListener listener){
 		psc.addPropertyChangeListener(listener);
 	}
 	
 	public String getName() {
-		return name;
+		//return name;
+		return name +" "+ email;
 	}
 	public void setName(String name) {
 		String oldValue = this.name;

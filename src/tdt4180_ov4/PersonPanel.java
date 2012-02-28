@@ -19,7 +19,7 @@ public class PersonPanel extends JPanel implements PropertyChangeListener{
 	JTextField NamePropertyComponent;
 	JTextField EmailPropertyComponent;
 	JTextField DateOfBirthPropertyComponent;
-	JComboBox<Gender> GenderPropertyComponent;
+	JComboBox GenderPropertyComponent;
 	JSlider HeightPropertyComponent;
 	Person model;
 	
@@ -56,7 +56,7 @@ public class PersonPanel extends JPanel implements PropertyChangeListener{
 		DateOfBirthPropertyComponent.setName("DateOfBirthPropertyComponent");
 		DateOfBirthPropertyComponent.getDocument().addDocumentListener(new dobAction());
 		
-		GenderPropertyComponent = new JComboBox<Gender>(Person.Gender.values());
+		GenderPropertyComponent = new JComboBox(Person.Gender.values());
 		GenderPropertyComponent.setName("GenderPropertyComponent");
 		GenderPropertyComponent.addActionListener(new genderAction());
 		
