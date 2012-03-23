@@ -33,7 +33,8 @@ public class PersonListPanel extends JPanel implements ListSelectionListener{
 		personList.addListSelectionListener(this);
 		personList.setFixedCellWidth(200);
 	//	personList.setSize(400, 400);
-		personList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+	//	personList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		personList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		
 		
 		personList.setName("PersonList");
